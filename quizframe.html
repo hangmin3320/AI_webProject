@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <html lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Team 12 - 변호석, 조항민</title>
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            align-items: flex-start;
+            padding-top: 20px;
         }
         .quiz-container {
             max-width: 600px;
@@ -85,7 +90,6 @@
                 <label><input type="radio" name="ox-1" value="X"> X</label>
             </div>
         </div>
-        <!-- OX Quiz 추가 -->
         <div class="question" id="ox-quiz-2">
             <h3>Is the grass green?</h3>
             <div class="options">
@@ -93,19 +97,11 @@
                 <label><input type="radio" name="ox-2" value="X"> X</label>
             </div>
         </div>
-
-        <!-- Short Answer Quiz -->
-        <div class="question" id="short-answer-quiz-1">
-            <h3>What is the capital of France?</h3>
+        <div class="question" id="ox-quiz-3">
+            <h3>Is the sea red?</h3>
             <div class="options">
-                <input type="text" id="short-answer-1" name="short-answer-1">
-            </div>
-        </div>
-        <!-- Short Answer Quiz 추가 -->
-        <div class="question" id="short-answer-quiz-2">
-            <h3>What is the largest planet in our solar system?</h3>
-            <div class="options">
-                <input type="text" id="short-answer-2" name="short-answer-2">
+                <label><input type="radio" name="ox-3" value="O"> O</label>
+                <label><input type="radio" name="ox-3" value="X"> X</label>
             </div>
         </div>
 
@@ -119,19 +115,27 @@
                 <label><input type="radio" name="mc-1" value="8"> 8</label>
             </div>
         </div>
-        <!-- Multiple Choice Quiz 추가 -->
         <div class="question" id="multiple-choice-quiz-2">
-            <h3>Which planet is known as the Red Planet?</h3>
+            <h3>What is the planet known as the Red Planet?</h3>
             <div class="options">
-                <label><input type="radio" name="mc-2" value="Earth"> Earth</label>
-                <label><input type="radio" name="mc-2" value="Mars"> Mars</label>
-                <label><input type="radio" name="mc-2" value="Jupiter"> Jupiter</label>
-                <label><input type="radio" name="mc-2" value="Venus"> Venus</label>
+                <label><input type="radio" name="mc-2" value="Earth"> 지구</label>
+                <label><input type="radio" name="mc-2" value="Mars"> 화성</label>
+                <label><input type="radio" name="mc-2" value="Jupiter"> 목성</label>
+                <label><input type="radio" name="mc-2" value="Venus"> 금성</label>
+            </div>
+        </div>
+        <div class="question" id="multiple-choice-quiz-3">
+            <h3>Which of the following is the chemical formula for water?</h3>
+            <div class="options">
+                <label><input type="radio" name="mc-3" value="H2O"> H2O</label>
+                <label><input type="radio" name="mc-3" value="CO2"> CO2</label>
+                <label><input type="radio" name="mc-3" value="O2"> O2</label>
+                <label><input type="radio" name="mc-3" value="N2"> N2</label>
             </div>
         </div>
 
         <div class="button-container">
-            <button onclick="submitQuiz()">Submit</button>
+            <button onclick="submitQuiz()">submit</button>
         </div>
         <div id="result"></div>
     </div>
@@ -143,29 +147,27 @@
             const oxResult1 = oxAnswer1 ? (oxAnswer1.value === "O" ? "Correct" : "Incorrect") : "No answer";
             const oxAnswer2 = document.querySelector('input[name="ox-2"]:checked');
             const oxResult2 = oxAnswer2 ? (oxAnswer2.value === "O" ? "Correct" : "Incorrect") : "No answer";
-
-            // Short Answer Quiz answers
-            const shortAnswer1 = document.getElementById('short-answer-1').value.trim().toLowerCase();
-            const shortAnswerResult1 = (shortAnswer1 === "paris") ? "Correct" : "Incorrect";
-            const shortAnswer2 = document.getElementById('short-answer-2').value.trim().toLowerCase();
-            const shortAnswerResult2 = (shortAnswer2 === "jupiter") ? "Correct" : "Incorrect";
+            const oxAnswer3 = document.querySelector('input[name="ox-3"]:checked');
+            const oxResult3 = oxAnswer3 ? (oxAnswer3.value === "X" ? "Correct" : "Incorrect") : "No answer";
 
             // Multiple Choice Quiz answers
             const mcAnswer1 = document.querySelector('input[name="mc-1"]:checked');
             const mcResult1 = mcAnswer1 ? (mcAnswer1.value === "7" ? "Correct" : "Incorrect") : "No answer";
             const mcAnswer2 = document.querySelector('input[name="mc-2"]:checked');
             const mcResult2 = mcAnswer2 ? (mcAnswer2.value === "Mars" ? "Correct" : "Incorrect") : "No answer";
+            const mcAnswer3 = document.querySelector('input[name="mc-3"]:checked');
+            const mcResult3 = mcAnswer3 ? (mcAnswer3.value === "H2O" ? "Correct" : "Incorrect") : "No answer";
 
             // Display results
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = `
-                <h3>Results</h3>
+                <h3>Result</h3>
                 <p>OX Quiz 1: ${oxResult1}</p>
                 <p>OX Quiz 2: ${oxResult2}</p>
-                <p>Short Answer Quiz 1: ${shortAnswerResult1}</p>
-                <p>Short Answer Quiz 2: ${shortAnswerResult2}</p>
+                <p>OX Quiz 3: ${oxResult3}</p>
                 <p>Multiple Choice Quiz 1: ${mcResult1}</p>
                 <p>Multiple Choice Quiz 2: ${mcResult2}</p>
+                <p>Multiple Choice Quiz 3: ${mcResult3}</p>
             `;
         }
     </script>
