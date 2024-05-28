@@ -9,61 +9,21 @@
 <body>
     <div class="quiz-container">
         <h1>Quiz</h1>
-        
-        <!-- Multiple Choice Quiz -->
-        <div class="question" id="multiple-choice-quiz-1">
-            <h3>다음 중 소수는 무엇인가요?</h3>
-            <p>다음 중 이런</p>
-            <div class="options">
-                <label><input type="radio" name="mc-1" value="4"> 4</label>
-                <label><input type="radio" name="mc-1" value="6"> 6</label>
-                <label><input type="radio" name="mc-1" value="7"> 7</label>
-                <label><input type="radio" name="mc-1" value="8"> 8</label>
-            </div>
-        </div>
-        <div class="question" id="multiple-choice-quiz-2">
-            <h3>붉은 행성으로 알려진 행성은 무엇인가요?</h3>
-            <div class="options">
-                <label><input type="radio" name="mc-2" value="Earth"> 지구</label>
-                <label><input type="radio" name="mc-2" value="Mars"> 화성</label>
-                <label><input type="radio" name="mc-2" value="Jupiter"> 목성</label>
-                <label><input type="radio" name="mc-2" value="Venus"> 금성</label>
-            </div>
-        </div>
-        <div class="question" id="multiple-choice-quiz-3">
-            <h3>다음 중 물의 화학식은 무엇인가요?</h3>
-            <div class="options">
-                <label><input type="radio" name="mc-3" value="H2O"> H2O</label>
-                <label><input type="radio" name="mc-3" value="CO2"> CO2</label>
-                <label><input type="radio" name="mc-3" value="O2"> O2</label>
-                <label><input type="radio" name="mc-3" value="N2"> N2</label>
-            </div>
-        </div>
-        <div class="question" id="multiple-choice-quiz-4">
-            <h3>태양계에서 가장 큰 행성은 무엇인가요?</h3>
-            <div class="options">
-                <label><input type="radio" name="mc-4" value="Earth"> 지구</label>
-                <label><input type="radio" name="mc-4" value="Mars"> 화성</label>
-                <label><input type="radio" name="mc-4" value="Jupiter"> 목성</label>
-                <label><input type="radio" name="mc-4" value="Venus"> 금성</label>
-            </div>
-        </div>
-
         <!-- Short Answer Quiz -->
         <div class="question" id="short-answer-quiz-1">
-            <h3>프랑스의 수도는 무엇인가요?</h3>
+            <h3>대한민국의 수도는?</h3>
             <div class="options">
                 <input type="text" id="short-answer-1" name="short-answer-1">
             </div>
         </div>
         <div class="question" id="short-answer-quiz-2">
-            <h3>미국의 수도는 무엇인가요?</h3>
+            <h3>큰곰자리의 꼬리인 7개의 별을 총칭하는 말로 국자모양과 유사한 이 별은 무엇입니까?</h3>
             <div class="options">
                 <input type="text" id="short-answer-2" name="short-answer-2">
             </div>
         </div>
         <div class="question" id="short-answer-quiz-3">
-            <h3>영국의 수도는 무엇인가요?</h3>
+            <h3>?</h3>
             <div class="options">
                 <input type="text" id="short-answer-3" name="short-answer-3">
             </div>
@@ -72,6 +32,30 @@
             <h3>독일의 수도는 무엇인가요?</h3>
             <div class="options">
                 <input type="text" id="short-answer-4" name="short-answer-4">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-5">
+            <h3>독일의 수도는 무엇인가요?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-5" name="short-answer-5">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-6">
+            <h3>독일의 수도는 무엇인가요?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-6" name="short-answer-6">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-7">
+            <h3>독일의 수도는 무엇인가요?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-7" name="short-answer-7">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-8">
+            <h3>독일의 수도는 무엇인가요?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-8" name="short-answer-8">
             </div>
         </div>
 
@@ -83,38 +67,35 @@
 
     <script>
         function submitQuiz() {
-            // Multiple Choice Quiz answers
-            const mcAnswer1 = document.querySelector('input[name="mc-1"]:checked');
-            const mcResult1 = mcAnswer1 ? (mcAnswer1.value === "7" ? "Correct" : "Incorrect") : "No answer";
-            const mcAnswer2 = document.querySelector('input[name="mc-2"]:checked');
-            const mcResult2 = mcAnswer2 ? (mcAnswer2.value === "Mars" ? "Correct" : "Incorrect") : "No answer";
-            const mcAnswer3 = document.querySelector('input[name="mc-3"]:checked');
-            const mcResult3 = mcAnswer3 ? (mcAnswer3.value === "H2O" ? "Correct" : "Incorrect") : "No answer";
-            const mcAnswer4 = document.querySelector('input[name="mc-4"]:checked');
-            const mcResult4 = mcAnswer4 ? (mcAnswer4.value === "Jupiter" ? "Correct" : "Incorrect") : "No answer";
-
             // Short Answer Quiz answers
             const shortAnswer1 = document.getElementById('short-answer-1').value.trim().toLowerCase();
-            const shortAnswerResult1 = (shortAnswer1 === "파리" || shortAnswer1 === "paris") ? "Correct" : "Incorrect";
+            const shortAnswerResult1 = (shortAnswer1 === "서울") ? "Correct" : "Incorrect";
             const shortAnswer2 = document.getElementById('short-answer-2').value.trim().toLowerCase();
-            const shortAnswerResult2 = (shortAnswer2 === "워싱턴" || shortAnswer2 === "washington") ? "Correct" : "Incorrect";
+            const shortAnswerResult2 = (shortAnswer2 === "북두칠성") ? "Correct" : "Incorrect";
             const shortAnswer3 = document.getElementById('short-answer-3').value.trim().toLowerCase();
             const shortAnswerResult3 = (shortAnswer3 === "런던" || shortAnswer3 === "london") ? "Correct" : "Incorrect";
             const shortAnswer4 = document.getElementById('short-answer-4').value.trim().toLowerCase();
             const shortAnswerResult4 = (shortAnswer4 === "베를린" || shortAnswer4 === "berlin") ? "Correct" : "Incorrect";
-
+            const shortAnswer5 = document.getElementById('short-answer-1').value.trim().toLowerCase();
+            const shortAnswerResult5 = (shortAnswer1 === "파리" || shortAnswer1 === "paris") ? "Correct" : "Incorrect";
+            const shortAnswer6 = document.getElementById('short-answer-2').value.trim().toLowerCase();
+            const shortAnswerResult6 = (shortAnswer2 === "워싱턴" || shortAnswer2 === "washington") ? "Correct" : "Incorrect";
+            const shortAnswer7 = document.getElementById('short-answer-3').value.trim().toLowerCase();
+            const shortAnswerResult7 = (shortAnswer3 === "런던" || shortAnswer3 === "london") ? "Correct" : "Incorrect";
+            const shortAnswer8 = document.getElementById('short-answer-4').value.trim().toLowerCase();
+            const shortAnswerResult8 = (shortAnswer4 === "베를린" || shortAnswer4 === "berlin") ? "Correct" : "Incorrect";
             // Display results
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = `
                 <h3>결과</h3>
-                <p>객관식 퀴즈 1: ${mcResult1}</p>
-                <p>객관식 퀴즈 2: ${mcResult2}</p>
-                <p>객관식 퀴즈 3: ${mcResult3}</p>
-                <p>객관식 퀴즈 4: ${mcResult4}</p>
                 <p>단답식 퀴즈 1: ${shortAnswerResult1}</p>
                 <p>단답식 퀴즈 2: ${shortAnswerResult2}</p>
                 <p>단답식 퀴즈 3: ${shortAnswerResult3}</p>
                 <p>단답식 퀴즈 4: ${shortAnswerResult4}</p>
+                <p>단답식 퀴즈 1: ${shortAnswerResult5}</p>
+                <p>단답식 퀴즈 2: ${shortAnswerResult6}</p>
+                <p>단답식 퀴즈 3: ${shortAnswerResult7}</p>
+                <p>단답식 퀴즈 4: ${shortAnswerResult8}</p>
             `;
         }
     </script>

@@ -14,10 +14,6 @@ body {
     align-items: flex-start;
     padding-top: 20px;
 }
-p {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-}
 .quiz-container {
     max-width: 800px;
     background-color: #fff;
