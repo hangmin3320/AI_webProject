@@ -4,56 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="quizEasy.css" type="text/css">
-    <title>Team 12 - 변호석, 조항민</title>
+    <title>Team 12</title>
 </head>
 <body>
     <div class="quiz-container">
-        <h1>Quiz</h1>
+        <h1>상식퀴즈 (초등학교수준)</h1>
         <!-- Short Answer Quiz -->
         <div class="question" id="short-answer-quiz-1">
-            <h3>대한민국의 수도는?</h3>
+            <h3>1. 대한민국의 수도는?<br> 
+            [10pt]</h3>
             <div class="options">
                 <input type="text" id="short-answer-1" name="short-answer-1">
             </div>
         </div>
         <div class="question" id="short-answer-quiz-2">
-            <h3>큰곰자리의 꼬리인 7개의 별을 총칭하는 말로 국자모양과 유사한 이 별은 무엇입니까?</h3>
+            <h3>2. 큰곰자리의 꼬리인 7개의 별을 총칭하는 말로 국자모양과 유사한 이 별은?<br>
+            [15pt]</h3>
             <div class="options">
                 <input type="text" id="short-answer-2" name="short-answer-2">
             </div>
         </div>
         <div class="question" id="short-answer-quiz-3">
-            <h3>?</h3>
+            <h3>3. '수능'은 어떤 단어의 줄임말인가?<br>
+            [10pt]</h3>
             <div class="options">
                 <input type="text" id="short-answer-3" name="short-answer-3">
             </div>
         </div>
         <div class="question" id="short-answer-quiz-4">
-            <h3>독일의 수도는 무엇인가요?</h3>
+            <h3>4. 덧셈, 뺄셈, 곱셈, 나눗셈 네 종류의 계산법을 부르는 명칭은?<br>
+            [10pt]</h3>
             <div class="options">
                 <input type="text" id="short-answer-4" name="short-answer-4">
             </div>
         </div>
         <div class="question" id="short-answer-quiz-5">
-            <h3>독일의 수도는 무엇인가요?</h3>
+            <h3>5. 대한민국에서 가장 큰 섬은?<br>
+            [15pt]</h3>
             <div class="options">
                 <input type="text" id="short-answer-5" name="short-answer-5">
             </div>
         </div>
         <div class="question" id="short-answer-quiz-6">
-            <h3>독일의 수도는 무엇인가요?</h3>
+            <h3>6. 영화관에서 오전 시간대, 주로 첫 회 한정으로 입장 요금을 할인해주는 행위는?<br>
+            [20pt]</h3>
             <div class="options">
                 <input type="text" id="short-answer-6" name="short-answer-6">
             </div>
         </div>
         <div class="question" id="short-answer-quiz-7">
-            <h3>독일의 수도는 무엇인가요?</h3>
+            <h3>7. 사람들이 보통 알고 있거나 알아야 하는 지식은?<br>
+            [10pt]</h3>
             <div class="options">
                 <input type="text" id="short-answer-7" name="short-answer-7">
             </div>
         </div>
         <div class="question" id="short-answer-quiz-8">
-            <h3>독일의 수도는 무엇인가요?</h3>
+            <h3>8. 나침반에서 'N'극이 가리키는 방향은 동서남북 중 어디인가?<br>
+            [10pt]</h3>
             <div class="options">
                 <input type="text" id="short-answer-8" name="short-answer-8">
             </div>
@@ -67,36 +75,13 @@
 
     <script>
         function submitQuiz() {
-            // Short Answer Quiz answers
-            const shortAnswer1 = document.getElementById('short-answer-1').value.trim().toLowerCase();
-            const shortAnswerResult1 = (shortAnswer1 === "서울") ? "Correct" : "Incorrect";
-            const shortAnswer2 = document.getElementById('short-answer-2').value.trim().toLowerCase();
-            const shortAnswerResult2 = (shortAnswer2 === "북두칠성") ? "Correct" : "Incorrect";
-            const shortAnswer3 = document.getElementById('short-answer-3').value.trim().toLowerCase();
-            const shortAnswerResult3 = (shortAnswer3 === "런던" || shortAnswer3 === "london") ? "Correct" : "Incorrect";
-            const shortAnswer4 = document.getElementById('short-answer-4').value.trim().toLowerCase();
-            const shortAnswerResult4 = (shortAnswer4 === "베를린" || shortAnswer4 === "berlin") ? "Correct" : "Incorrect";
-            const shortAnswer5 = document.getElementById('short-answer-1').value.trim().toLowerCase();
-            const shortAnswerResult5 = (shortAnswer1 === "파리" || shortAnswer1 === "paris") ? "Correct" : "Incorrect";
-            const shortAnswer6 = document.getElementById('short-answer-2').value.trim().toLowerCase();
-            const shortAnswerResult6 = (shortAnswer2 === "워싱턴" || shortAnswer2 === "washington") ? "Correct" : "Incorrect";
-            const shortAnswer7 = document.getElementById('short-answer-3').value.trim().toLowerCase();
-            const shortAnswerResult7 = (shortAnswer3 === "런던" || shortAnswer3 === "london") ? "Correct" : "Incorrect";
-            const shortAnswer8 = document.getElementById('short-answer-4').value.trim().toLowerCase();
-            const shortAnswerResult8 = (shortAnswer4 === "베를린" || shortAnswer4 === "berlin") ? "Correct" : "Incorrect";
-            // Display results
-            const resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = `
-                <h3>결과</h3>
-                <p>단답식 퀴즈 1: ${shortAnswerResult1}</p>
-                <p>단답식 퀴즈 2: ${shortAnswerResult2}</p>
-                <p>단답식 퀴즈 3: ${shortAnswerResult3}</p>
-                <p>단답식 퀴즈 4: ${shortAnswerResult4}</p>
-                <p>단답식 퀴즈 1: ${shortAnswerResult5}</p>
-                <p>단답식 퀴즈 2: ${shortAnswerResult6}</p>
-                <p>단답식 퀴즈 3: ${shortAnswerResult7}</p>
-                <p>단답식 퀴즈 4: ${shortAnswerResult8}</p>
-            `;
+            const answers = {};
+            for (let i = 1; i <= 8; i++) {
+                const answer = document.getElementById(`short-answer-${i}`).value.trim().toLowerCase();
+                answers[`shortAnswer${i}`] = answer;
+            }
+            localStorage.setItem('quizAnswers', JSON.stringify(answers));
+            window.location.href = "quizEasyresult.html";
         }
     </script>
 </body>

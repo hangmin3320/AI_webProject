@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quizEasy.css" type="text/css">
+    <title>Quiz Results</title>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>상식퀴즈 결과</h1>
+        <!-- Short Answer Quiz -->
+        <div class="question" id="short-answer-quiz-1">
+            <h3>1. 대한민국의 수도는?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-1" name="short-answer-1">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-2">
+            <h3>2. 큰곰자리의 꼬리인 7개의 별을 총칭하는 말로 국자모양과 유사한 이 별은?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-2" name="short-answer-2">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-3">
+            <h3>3. '수능'은 어떤 단어의 줄임말인가?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-3" name="short-answer-3">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-4">
+            <h3>4. 덧셈, 뺄셈, 곱셈, 나눗셈 네 종류의 계산법을 부르는 명칭은?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-4" name="short-answer-4">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-5">
+            <h3>5. 대한민국에서 가장 큰 섬은?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-5" name="short-answer-5">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-6">
+            <h3>6. 영화관에서 오전 시간대, 주로 첫 회 한정으로 입장 요금을 할인해주는 행위는?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-6" name="short-answer-6">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-7">
+            <h3>7. 사람들이 보통 알고 있거나 알아야 하는 지식은?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-7" name="short-answer-7">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-8">
+            <h3>8. 나침반에서 'N'극이 가리키는 방향은 동서남북 중 어디인가?</h3>
+            <div class="options">
+                <input type="text" id="short-answer-8" name="short-answer-8">
+            </div>
+        </div>
+        <div id="final-score"></div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            shortAnswer1: "서울",
+            shortAnswer2: "북두칠성",
+            shortAnswer3: "대학수학능력시험",
+            shortAnswer4: "사칙연산",
+            shortAnswer5: "제주도",
+            shortAnswer6: ["조조영화", "조조"],
+            shortAnswer7: "상식",
+            shortAnswer8: ["북", "북쪽"]
+        };
+
+        const questionWeights = {
+            shortAnswer1: 10,
+            shortAnswer2: 15,
+            shortAnswer3: 10,
+            shortAnswer4: 10,
+            shortAnswer5: 15,
+            shortAnswer6: 10,
+            shortAnswer7: 10,
+            shortAnswer8: 20
+        };
+
+        function displayResults() {
+            const answers = JSON.parse(localStorage.getItem('quizAnswers'));
+            if (!answers) {
+                console.error('quizAnswers not found in localStorage');
+                return;
+            }
+            
+            let totalScore = 0;
+            for (let i = 1; i <= 8; i++) {
+                const userAnswer = answers[`shortAnswer${i}`];
+                const correctAnswer = correctAnswers[`shortAnswer${i}`];
+                const inputElement = document.getElementById(`short-answer-${i}`);
+
+                inputElement.value = userAnswer;
+
+                if (Array.isArray(correctAnswer) ? correctAnswer.includes(userAnswer) : userAnswer === correctAnswer) {
+                    inputElement.classList.add('correct');
+                    totalScore += questionWeights[`shortAnswer${i}`];
+                } else {
+                    inputElement.classList.add('incorrect');
+                    const correctAnswerParagraph = document.createElement('p');
+                    correctAnswerParagraph.innerText = `정답: ${Array.isArray(correctAnswer) ? correctAnswer.join(", ") : correctAnswer}`;
+                    inputElement.parentNode.appendChild(correctAnswerParagraph);
+                }
+            }
+
+            const finalScoreDiv = document.getElementById('final-score');
+            finalScoreDiv.innerHTML = `<h2>최종 점수: ${totalScore}/100</h2>`;
+            let message;
+            if (totalScore === 100) {
+                message = "훌륭합니다! 모두 정답입니다!";
+            } else if (totalScore >= 80) {
+                message = "실망입니다!";
+            } else if (totalScore >= 60) {
+                message = "평소에 공부하는 좀 하는게 좋을 것 같습니다!";
+            } else {
+                message = "할 말이 없습니다...";
+            }
+            finalScoreDiv.innerHTML += `<p>${message}</p>`;
+        }
+
+        window.onload = displayResults;
+    </script>
+</body>
+</html>
