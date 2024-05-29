@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quizNormal.css" type="text/css">
+    <title>Team 12 - 변호석, 조항민</title>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>상식퀴즈</h1>
+        <!-- Short Answer Quiz -->
+        <div class="question" id="short-answer-quiz-1">
+            <h3>1. 본래는 주식 용어이나, 일상에서 '더 큰 손해를 막기 위해 작은 손해를 감수하고 어떤 행위를 그만 둠'의 의미로 활용되고 있는 이 단어는?<br> 
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-1" name="short-answer-1">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-2">
+            <h3>2. 윷놀이에서 '걸'을 뜻하는 동물은?<br>
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-2" name="short-answer-2">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-3">
+            <h3>3. 세계적으로 문학, 화학, 물리학, 생리학 또는 의학, 평화, 경제학 6가지 분야로 나누어 인류 복지에 공헌한 사람이나 단체에게 수여되는 상의 이름은?<br>
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-3" name="short-answer-3">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-4">
+            <h3>4. 세계에서 인구가 가장 많은 나라는?<br>
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-4" name="short-answer-4">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-5">
+            <h3>5. 공연이 끝난 후, 박수를 받으며 퇴장했던 배우들이 다시 무대로 나와 관객들에게 인사하는 것은?<br>
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-5" name="short-answer-5">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-6">
+            <h3>6. 홍채 세포의 DNA 이상으로 인해 발생하는 이것. 멜라닌 색소의 농도 차이 때문에 양쪽 눈의 색깔이 달라지는 현상인 이것은?<br>
+            [15pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-6" name="short-answer-6">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-7">
+            <h3>7. 그리스의 물리학자인 아르키메데스는 왕의 금관이 순금인지 아닌지를 감정해달라는 요청을 받고 고심에 빠졌다. 그때 아르키메데스는 목욕탕에 들어가자마자 물이 넘치는 것을 보고 그 답을 찾았는데, 깨달음에서 비롯된 기쁨에 목욕탕을 뛰쳐나오며 '이렇게' 외쳤다고 한다. 그리스어로 '알았다!'라는 의미를 가진 이 말은?<br>
+            [15pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-7" name="short-answer-7">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-8">
+            <h3>8. '더 이상 후퇴할 수 없는 최후의 보루'라는 뜻을 가진, 프랑스 장군의 이름에서 유래한 이 단어는?<br>
+            [20pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-8" name="short-answer-8">
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button onclick="submitQuiz()">제출</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const answers = {};
+            for (let i = 1; i <= 8; i++) {
+                const answer = document.getElementById(`short-answer-${i}`).value.trim().toLowerCase();
+                answers[`shortAnswer${i}`] = answer;
+            }
+            localStorage.setItem('quizAnswers', JSON.stringify(answers));
+            window.location.href = "quizNormalresult.html";
+        }
+    </script>
+</body>
+</html>
