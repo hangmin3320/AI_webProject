@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quizHard.css" type="text/css">
+    <title>Team 12 - 변호석, 조항민</title>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>상식퀴즈</h1>
+        <!-- Short Answer Quiz -->
+        <div class="question" id="short-answer-quiz-1">
+            <h3>1. 물건을 구입하거나, 각종 서비스를 제공받을 때 그 가격에 일정비율 붙게 하는 세금은?<br> 
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-1" name="short-answer-1">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-2">
+            <h3>2. 발행하는 사람이 일정한 금전의 지급을 약속하며 발행하는 일종의 지급보증서 외상 증서는?<br>
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-2" name="short-answer-2">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-3">
+            <h3>3. 타인의 기대나 관심으로 인하여 능률이 오르거나 결과가 좋아지는 현상은?<br>
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-3" name="short-answer-3">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-4">
+            <h3>4. 신축 건물안에서 거주자들이 느끼는 건강상 문제 및 불쾌감을 이르는 용어이다. 이 용어는?<br>
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-4" name="short-answer-4">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-5">
+            <h3>5. 눈 앞에 먼지나 벌레같은 무언가가 떠 다니는 것처럼 느끼는 증상이며, 시선위치에 따라 따라다니기도 하는 이 증상은?<br>
+            [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-5" name="short-answer-5">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-6">
+            <h3>6. 이것은 나이가 많이 들어 승려가 된 사람을 가리키던 말로 오늘날에는 늦은 나이에 어떤 일을 시작한 사람을 지칭하는 말로 배움을 늦게 시작해 남들보다 열심히 노력하여 성공한 사람을 뜻하는 이것은?<br>
+            [15pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-6" name="short-answer-6">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-7">
+            <h3>7. 웹에서 최상의 비트맵 이미지를 구현하기 위해 W3C에서 제정한 파일 포맷으로, GIF의 대안인 이 확장자는?<br>
+            [15pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-7" name="short-answer-7">
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-8">
+            <h3>8. 스승의 날은 스승을 존경하는 사회적 토를 조성하고, 교권에 대한 인식을 제고하기 위해서 지정한 기념일로 처음에는 5월 15일이 아니었지만 '(   )의 (   )'이기 때문에 5월 15일로 변경하게 되었는데 '(   )'안에 들어갈 올바른 단어는?(괄호 안에 들어갈 올바른 단어를 채워서 ' &nbsp &nbsp '안의 문장을 그대로 작성해주십시오.)<br>
+            [20pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-8" name="short-answer-8">
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button onclick="submitQuiz()">제출</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const answers = {};
+            for (let i = 1; i <= 8; i++) {
+                const answer = document.getElementById(`short-answer-${i}`).value.trim().toLowerCase();
+                answers[`shortAnswer${i}`] = answer;
+            }
+            localStorage.setItem('quizAnswers', JSON.stringify(answers));
+            window.location.href = "quizHardresult.html";
+        }
+    </script>
+</body>
+</html>

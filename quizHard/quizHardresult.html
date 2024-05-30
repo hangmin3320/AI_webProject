@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quizHard.css" type="text/css">
+    <title>Quiz Results</title>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>상식퀴즈 결과</h1>
+        <!-- Short Answer Quiz -->
+        <div class="question" id="short-answer-quiz-1">
+            <h3>1. 물건을 구입하거나, 각종 서비스를 제공받을 때 그 가격에 일정비율 붙게 하는 세금은?<br> 
+                [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-1" name="short-answer-1" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-2">
+            <h3>2. 발행하는 사람이 일정한 금전의 지급을 약속하며 발행하는 일종의 지급보증서 외상 증서는?<br>
+                [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-2" name="short-answer-2" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-3">
+            <h3>3. 타인의 기대나 관심으로 인하여 능률이 오르거나 결과가 좋아지는 현상은?<br>
+                [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-3" name="short-answer-3" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-4">
+            <h3>4. 신축 건물안에서 거주자들이 느끼는 건강상 문제 및 불쾌감을 이르는 용어이다. 이 용어는?<br>
+                [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-4" name="short-answer-4" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-5">
+            <h3>5. 눈 앞에 먼지나 벌레같은 무언가가 떠 다니는 것처럼 느끼는 증상이며, 시선위치에 따라 따라다니기도 하는 이 증상은?<br>
+                [10pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-5" name="short-answer-5" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-6">
+            <h3>6. 이것은 나이가 많이 들어 승려가 된 사람을 가리키던 말로 오늘날에는 늦은 나이에 어떤 일을 시작한 사람을 지칭하는 말로 배움을 늦게 시작해 남들보다 열심히 노력하여 성공한 사람을 뜻하는 이것은?<br>
+                [15pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-6" name="short-answer-6" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-7">
+            <h3>7. 웹에서 최상의 비트맵 이미지를 구현하기 위해 W3C에서 제정한 파일 포맷으로, GIF의 대안인 이 확장자는?<br>
+                [15pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-7" name="short-answer-7" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-8">
+            <h3>8. 스승의 날은 스승을 존경하는 사회적 토를 조성하고, 교권에 대한 인식을 제고하기 위해서 지정한 기념일로 처음에는 5월 15일이 아니었지만 '(   )의 (   )'이기 때문에 5월 15일로 변경하게 되었는데 '(   )'안에 들어갈 올바른 단어는?(괄호 안에 들어갈 올바른 단어를 채워서 ' &nbsp &nbsp '안의 문장을 그대로 작성해주십시오.)<br>
+                [20pt]</h3>
+            <div class="options">
+                <input type="text" id="short-answer-8" name="short-answer-8" readonly>
+            </div>
+        </div>
+        <div id="final-score"></div>
+        <div class="backToHome" onclick="location.href = '../index.html';">
+            퀴즈 선택으로 돌아가기
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            shortAnswer1: "부가가치세",
+            shortAnswer2: "어음",
+            shortAnswer3: "피그말리온 효과",
+            shortAnswer4: "새집증후군",
+            shortAnswer5: "비문증",
+            shortAnswer6: "늦깎이",
+            shortAnswer7: ["PNG", "png"],
+            shortAnswer8: ["세종대왕의 생일", "세종대왕의 탄신일"]
+        };
+
+        const questionWeights = {
+            shortAnswer1: 10,
+            shortAnswer2: 10,
+            shortAnswer3: 10,
+            shortAnswer4: 10,
+            shortAnswer5: 10,
+            shortAnswer6: 15,
+            shortAnswer7: 15,
+            shortAnswer8: 20
+        };
+
+        function displayResults() {
+            const answers = JSON.parse(localStorage.getItem('quizAnswers'));
+            if (!answers) {
+                console.error('quizAnswers not found in localStorage');
+                return;
+            }
+            
+            let totalScore = 0;
+            for (let i = 1; i <= 8; i++) {
+                const userAnswer = answers[`shortAnswer${i}`];
+                const correctAnswer = correctAnswers[`shortAnswer${i}`];
+                const inputElement = document.getElementById(`short-answer-${i}`);
+
+                inputElement.value = userAnswer;
+
+                if (Array.isArray(correctAnswer) ? correctAnswer.includes(userAnswer) : userAnswer === correctAnswer) {
+                    inputElement.classList.add('correct');
+                    totalScore += questionWeights[`shortAnswer${i}`];
+                } else {
+                    inputElement.classList.add('incorrect');
+                    const correctAnswerParagraph = document.createElement('p');
+                    correctAnswerParagraph.innerText = `정답: ${Array.isArray(correctAnswer) ? correctAnswer.join(", ") : correctAnswer}`;
+                    inputElement.parentNode.appendChild(correctAnswerParagraph);
+                }
+            }
+
+            const finalScoreDiv = document.getElementById('final-score');
+            finalScoreDiv.innerHTML = `<h2>최종 점수: ${totalScore}/100</h2>`;
+            let message;
+            if (totalScore === 100) {
+                message = "정말 놀랍습니다! 모두 정답입니다! 당신은 상식왕!!";
+            } else if (totalScore >= 80) {
+                message = "훌륭합니다! 어디가서 상식 좀 있으시다고 하셔도 되겠습니다!";
+            } else if (totalScore >= 60) {
+                message = "아쉽습니다. 좀 더 열심히 공부합시다!";
+            } else {
+                message = "아직은 부족한 것 같습니다. 더 노력해봅시다!";
+            }
+            finalScoreDiv.innerHTML += `<p>${message}</p>`;
+        }
+
+        window.onload = displayResults;
+    </script>
+</body>
+</html>
