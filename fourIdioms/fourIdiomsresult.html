@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fourIdioms.css" type="text/css">
+    <title>Quiz Results</title>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>상식퀴즈 결과</h1>
+        <!-- Short Answer Quiz -->
+        <div class="question" id="short-answer-quiz-1">
+            <h3>1. </h3>
+            <div class="options">
+                <input type="text" id="short-answer-1" name="short-answer-1" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-2">
+            <h3>2. </h3>
+            <div class="options">
+                <input type="text" id="short-answer-2" name="short-answer-2" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-3">
+            <h3>3. </h3>
+            <div class="options">
+                <input type="text" id="short-answer-3" name="short-answer-3" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-4">
+            <h3>4. </h3>
+            <div class="options">
+                <input type="text" id="short-answer-4" name="short-answer-4" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-5">
+            <h3>5. </h3>
+            <div class="options">
+                <input type="text" id="short-answer-5" name="short-answer-5" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-6">
+            <h3>6. </h3>
+            <div class="options">
+                <input type="text" id="short-answer-6" name="short-answer-6" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-7">
+            <h3>7. </h3>
+            <div class="options">
+                <input type="text" id="short-answer-7" name="short-answer-7" readonly>
+            </div>
+        </div>
+        <div class="question" id="short-answer-quiz-8">
+            <h3>8. </h3>
+            <div class="options">
+                <input type="text" id="short-answer-8" name="short-answer-8" readonly>
+            </div>
+        </div>
+        <div id="final-score"></div>
+        <div class="backToHome" onclick="location.href = '../index.html';">
+            퀴즈 선택으로 돌아가기
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            shortAnswer1: "다다익선",
+            shortAnswer2: "환골탈태",
+            shortAnswer3: "역지사지",
+            shortAnswer4: "이구동성",
+            shortAnswer5: "표리부동",
+            shortAnswer6: "청출어람",
+            shortAnswer7: "초록동색",
+            shortAnswer8: "괄목상대"
+        };
+
+        const questionWeights = {
+            shortAnswer1: 10,
+            shortAnswer2: 10,
+            shortAnswer3: 10,
+            shortAnswer4: 10,
+            shortAnswer5: 10,
+            shortAnswer6: 15,
+            shortAnswer7: 15,
+            shortAnswer8: 20
+        };
+
+        function displayResults() {
+            const answers = JSON.parse(localStorage.getItem('quizAnswers'));
+            if (!answers) {
+                console.error('quizAnswers not found in localStorage');
+                return;
+            }
+            
+            let totalScore = 0;
+            for (let i = 1; i <= 8; i++) {
+                const userAnswer = answers[`shortAnswer${i}`];
+                const correctAnswer = correctAnswers[`shortAnswer${i}`];
+                const inputElement = document.getElementById(`short-answer-${i}`);
+
+                inputElement.value = userAnswer;
+
+                if (Array.isArray(correctAnswer) ? correctAnswer.includes(userAnswer) : userAnswer === correctAnswer) {
+                    inputElement.classList.add('correct');
+                    totalScore += questionWeights[`shortAnswer${i}`];
+                } else {
+                    inputElement.classList.add('incorrect');
+                    const correctAnswerParagraph = document.createElement('p');
+                    correctAnswerParagraph.innerText = `정답: ${Array.isArray(correctAnswer) ? correctAnswer.join(", ") : correctAnswer}`;
+                    inputElement.parentNode.appendChild(correctAnswerParagraph);
+                }
+            }
+
+            const finalScoreDiv = document.getElementById('final-score');
+            finalScoreDiv.innerHTML = `<h2>최종 점수: ${totalScore}/100</h2>`;
+            let message;
+            if (totalScore === 100) {
+                message = "정말 놀랍습니다! 모두 정답입니다! 당신은 상식왕!!";
+            } else if (totalScore >= 80) {
+                message = "훌륭합니다! 어디가서 상식 좀 있으시다고 하셔도 되겠습니다!";
+            } else if (totalScore >= 60) {
+                message = "아쉽습니다. 좀 더 열심히 공부합시다!";
+            } else {
+                message = "아직은 부족한 것 같습니다. 더 노력해봅시다!";
+            }
+            finalScoreDiv.innerHTML += `<p>${message}</p>`;
+        }
+
+        window.onload = displayResults;
+    </script>
+</body>
+</html>
