@@ -8,7 +8,14 @@
 </head>
 <body>
     <div class="quiz-container">
-        <h1>상식퀴즈</h1>
+        <div class="title">
+            <button class="backToHomeButton" onclick="redirectToHome()">
+                <img src="../home.png">
+            </button>
+            <div class="quizTitle">
+            상식퀴즈
+            </div>
+        </div>
         <!-- Short Answer Quiz -->
         <div class="question" id="short-answer-quiz-1">
             <h3>1. 물건을 구입하거나, 각종 서비스를 제공받을 때 그 가격에 일정비율 붙게 하는 세금은?<br> 
@@ -83,6 +90,10 @@
             localStorage.setItem('quizAnswers', JSON.stringify(answers));
             window.location.href = "quizHardresult.html";
         }
+
+        function redirectToHome() {
+        window.location.href = "../index.html";
+    }
     </script>
 </body>
 </html>

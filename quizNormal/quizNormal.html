@@ -8,7 +8,14 @@
 </head>
 <body>
     <div class="quiz-container">
-        <h1>상식퀴즈</h1>
+        <div class="title">
+            <button class="backToHomeButton" onclick="redirectToHome()">
+                <img src="../home.png">
+            </button>
+            <div class="quizTitle">
+            상식퀴즈
+            </div>
+        </div>
         <!-- Short Answer Quiz -->
         <div class="question" id="short-answer-quiz-1">
             <h3>1. 본래는 주식 용어이나, 일상에서 '더 큰 손해를 막기 위해 작은 손해를 감수하고 어떤 행위를 그만 둠'의 의미로 활용되고 있는 이 단어는?<br> 
@@ -83,6 +90,10 @@
             localStorage.setItem('quizAnswers', JSON.stringify(answers));
             window.location.href = "quizNormalresult.html";
         }
+
+        function redirectToHome() {
+        window.location.href = "../index.html";
+    }
     </script>
 </body>
 </html>
