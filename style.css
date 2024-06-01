@@ -29,6 +29,7 @@ h1 {
     cursor: pointer;
     transition: background 0.3s;
     text-align: center;
+    font-weight: bold;
 }
 
 .select:hover {
