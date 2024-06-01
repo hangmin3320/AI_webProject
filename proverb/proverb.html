@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="proverb.css" type="text/css">
+    <title>Team 12 - 변호석, 조항민</title>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>속담 이어말하기 퀴즈</h1>
+        <!-- Multiple Choice Quiz -->
+        <div class="question" id="multiple-choice-quiz-1">
+            <h3>1. 가는 날이 <br> 
+            [10pt]</h3>
+            <div class="options">
+                <label><input type="radio" name="question1" value="a"> 장날 </label>
+                <label><input type="radio" name="question1" value="b"> 좋은 날 </label>
+                <label><input type="radio" name="question1" value="c"> 기일 </label>
+                <label><input type="radio" name="question1" value="d"> 슬픈 날</label>
+            </div>
+        </div>
+        <div class="question" id="multiple-choice-quiz-2">
+            <h3>2. 쥐구멍에도<br> 
+            [10pt]</h3>
+            <div class="options">
+                <label><input type="radio" name="question2" value="a"> 숨을 곳은 있다 </label>
+                <label><input type="radio" name="question2" value="b"> 부족한 것은 없다 </label>
+                <label><input type="radio" name="question2" value="c"> 볕 들 날이 있다 </label>
+                <label><input type="radio" name="question2" value="d"> 살 사람은 산다 </label>
+            </div>
+        </div>
+        <div class="question" id="multiple-choice-quiz-3">
+            <h3>3. 개밥에 <br> 
+            [10pt]</h3>
+            <div class="options">
+                <label><input type="radio" name="question3" value="a"> 고양이 밥 </label>
+                <label><input type="radio" name="question3" value="b"> 소금 </label>
+                <label><input type="radio" name="question3" value="c"> 콩 </label>
+                <label><input type="radio" name="question3" value="d"> 도토리 </label>
+            </div>
+        </div>
+        <div class="question" id="multiple-choice-quiz-4">
+            <h3>4. 발 없는 말이 <br> 
+            [10pt]</h3>
+            <div class="options">
+                <label><input type="radio" name="question4" value="a"> 천리 간다 </label>
+                <label><input type="radio" name="question4" value="b"> 십리 간다 </label>
+                <label><input type="radio" name="question4" value="c"> 퍼져 나간다 </label>
+                <label><input type="radio" name="question4" value="d"> 아무것도 못한다 </label>
+            </div>
+        </div>
+        <div class="question" id="multiple-choice-quiz-5">
+            <h3>5. 되로 주고 <br> 
+            [10pt]</h3>
+            <div class="options">
+                <label><input type="radio" name="question5" value="a">  되로 받는다 </label>
+                <label><input type="radio" name="question5" value="b">  홉으로 받는다 </label>
+                <label><input type="radio" name="question5" value="c">  말로 받는다 </label>
+                <label><input type="radio" name="question5" value="d">  아무것도 못 받는다 </label>
+            </div>
+        </div>
+        <div class="question" id="multiple-choice-quiz-6">
+            <h3>6. 팥으로 메주를 쑨다 해도.<br> 
+            [15pt]</h3>
+            <div class="options">
+                <label><input type="radio" name="question6" value="a"> 곧이 안 믿는다 </label>
+                <label><input type="radio" name="question6" value="b"> 곧이 듣는다 </label>
+                <label><input type="radio" name="question6" value="c"> 말리지 않는다 </label>
+                <label><input type="radio" name="question6" value="d"> 불가능한 것은 아니다 </label>
+            </div>
+        </div>
+        <div class="question" id="multiple-choice-quiz-7">
+            <h3>7. 냉수 먹고 <br> 
+            [15pt]</h3>
+            <div class="options">
+                <label><input type="radio" name="question7" value="a"> 정신 차리기 </label>
+                <label><input type="radio" name="question7" value="b"> 온수 먹고 </label>
+                <label><input type="radio" name="question7" value="c"> 후회한다 </label>
+                <label><input type="radio" name="question7" value="d"> 이 쑤시기 </label>
+            </div>
+        </div>
+        <div class="question" id="multiple-choice-quiz-8">
+            <h3>8. 핑계 없는 <br> 
+            [20pt]</h3>
+            <div class="options">
+                <label><input type="radio" name="question8" value="a"> 잘못 없다 </label>
+                <label><input type="radio" name="question8" value="b"> 사람 없다 </label>
+                <label><input type="radio" name="question8" value="c"> 무덤 없다 </label>
+                <label><input type="radio" name="question8" value="d"> 상황 없다 </label>
+            </div>
+        </div>
+        
+
+        <div class="button-container">
+            <button onclick="submitQuiz()">제출</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const answers = {};
+            for (let i = 1; i <= 8; i++) {
+                const selectedOption = document.querySelector(`input[name="question${i}"]:checked`);
+                if (selectedOption) {
+                    answers[`question${i}`] = selectedOption.value;
+                } else {
+                    answers[`question${i}`] = null;
+                }
+            }
+            localStorage.setItem('quizAnswers', JSON.stringify(answers));
+            window.location.href = "proverbresult.html";
+        }
+    </script>
+</body>
+</html>
