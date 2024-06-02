@@ -82,13 +82,17 @@
 
     <script>
         function submitQuiz() {
-            const answers = {};
-            for (let i = 1; i <= 8; i++) {
-                const answer = document.getElementById(`short-answer-${i}`).value.trim().toLowerCase();
-                answers[`shortAnswer${i}`] = answer;
+            const answers = {}; // 사용자 답변을 저장할 빈 객체를 생성
+            for (let i = 1; i <= 8; i++) { // 1번부터 8번까지의 질문을 순회
+                const answer = document.getElementById(`short-answer-${i}`).value.trim().toLowerCase(); 
+                // 각 질문의 답변을 가져와 공백을 제거하고 소문자로 변환
+                answers[`shortAnswer${i}`] = answer; 
+                // 변환된 답변을 answers 객체에 'shortAnswer1', 'shortAnswer2' 형식으로 저장
             }
-            localStorage.setItem('quizAnswers', JSON.stringify(answers));
-            window.location.href = "quizEasyresult.html";
+            localStorage.setItem('quizAnswers', JSON.stringify(answers)); 
+            // answers 객체를 JSON 문자열로 변환하여 'quizAnswers'라는 키로 로컬 스토리지에 저장
+            window.location.href = "quizEasyresult.html"; 
+            // 퀴즈 결과 페이지로 이동
         }
 
         function redirectToHome() {
