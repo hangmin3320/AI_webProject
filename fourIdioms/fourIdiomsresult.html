@@ -125,13 +125,13 @@
             finalScoreDiv.innerHTML = `<h2>최종 점수: ${totalScore}/100</h2>`;
             let message;
             if (totalScore === 100) {
-                message = "정말 놀랍습니다! 모두 정답입니다! 당신은 상식왕!!";
+                message = "정말 놀랍습니다! 모두 정답입니다!";
             } else if (totalScore >= 80) {
-                message = "훌륭합니다! 어디가서 상식 좀 있으시다고 하셔도 되겠습니다!";
+                message = "훌륭합니다! 사자성어를 잘 아시는군요!";
             } else if (totalScore >= 60) {
-                message = "아쉽습니다. 좀 더 열심히 공부합시다!";
+                message = "괜찮습니다! 금방 100점도 갈 수 있을겁니다!";
             } else {
-                message = "아직은 부족한 것 같습니다. 더 노력해봅시다!";
+                message = "사자성어를 좀 더 공부합시다!";
             }
             finalScoreDiv.innerHTML += `<p>${message}</p>`;
         }

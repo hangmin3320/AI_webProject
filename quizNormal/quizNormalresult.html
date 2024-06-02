@@ -127,11 +127,11 @@
             if (totalScore === 100) {
                 message = "훌륭합니다! 모두 정답입니다!";
             } else if (totalScore >= 80) {
-                message = "충분합니다! 다음번엔 100점을 노려봅시다.";
+                message = "아쉽지만 다음 기회에 100점을 노려봅시다!";
             } else if (totalScore >= 60) {
-                message = "아쉽습니다. 공부를 더 하고 100점을 노려봅시다!";
+                message = "공부를 조금만 더 해봅시다!";
             } else {
-                message = "조금 더 노력합시다!";
+                message = "아직 부족합니다. 조금 더 노력합시다!";
             }
             finalScoreDiv.innerHTML += `<p>${message}</p>`;
         }

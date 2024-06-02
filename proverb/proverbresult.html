@@ -152,11 +152,13 @@
 
         function getScoreMessage(score) {
             if (score === 100) {
-                return "축하합니다! 완벽한 점수네요!";
-            } else if (score >= 70) {
-                return "잘했어요! 꽤 높은 점수네요!";
+                return "축하합니다! 완벽한 점수입니다!";
+            } else if (score >= 80) {
+                return "잘했습니다! 꽤 높은 점수입니다!";
+            } else if (score >= 60) {
+                return "더 노력해야겠습니다. 다시 도전해 보세요!";
             } else {
-                return "더 노력해야겠어요. 다시 도전해 보세요!";
+                return "속담을 잘 모르시군요..."
             }
         }
 
