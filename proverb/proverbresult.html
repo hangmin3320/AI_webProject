@@ -146,23 +146,22 @@
                 });
             }
 
-            const scoreMessage = getScoreMessage(totalScore);
-            document.getElementById('final-score').innerHTML = `최종 점수: ${totalScore}점 - ${scoreMessage}`;
-        }
-
-        function getScoreMessage(score) {
-            if (score === 100) {
-                return "축하합니다! 완벽한 점수입니다!";
-            } else if (score >= 80) {
-                return "잘했습니다! 꽤 높은 점수입니다!";
-            } else if (score >= 60) {
-                return "더 노력해야겠습니다. 다시 도전해 보세요!";
+            const finalScoreDiv = document.getElementById('final-score');
+            finalScoreDiv.innerHTML = `<h2>최종 점수: ${totalScore}/100</h2>`;
+            let message;
+            if (totalScore === 100) {
+                message = "축하합니다! 완벽한 점수입니다!";
+            } else if (totalScore >= 80) {
+                message = "잘했습니다! 꽤 높은 점수입니다!";
+            } else if (totalScore >= 60) {
+                message = "더 노력해야겠습니다. 다시 도전해 보세요!";
             } else {
-                return "속담을 잘 모르시군요..."
+                message = "속담을 잘 모르시군요...";
             }
+            finalScoreDiv.innerHTML += `<p>${message}</p>`;
         }
 
-        displayResults();
+        window.onload = displayResults;
     </script>
 </body>
 </html>

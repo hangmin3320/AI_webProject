@@ -73,6 +73,7 @@
     </div>
 
     <script>
+        // 각 질문에 대한 정답을 저장하는 객체
         const correctAnswers = {
             shortAnswer1: "서울",
             shortAnswer2: "북두칠성",
@@ -84,6 +85,7 @@
             shortAnswer8: ["북", "북쪽"]
         };
 
+        // 각 질문의 가중치(점수)를 저장하는 객체
         const questionWeights = {
             shortAnswer1: 10,
             shortAnswer2: 15,
@@ -95,35 +97,42 @@
             shortAnswer8: 10
         };
 
+        // 퀴즈 결과를 표시하는 함수
         function displayResults() {
+            // 로컬 스토리지에서 'quizAnswers' 항목을 가져와 객체로 변환
             const answers = JSON.parse(localStorage.getItem('quizAnswers'));
+            
+            // 로컬 스토리지에 'quizAnswers'가 없을 경우 에러 메시지를 출력하고 함수 종료
             if (!answers) {
                 console.error('quizAnswers not found in localStorage');
                 return;
             }
             
-            let totalScore = 0;
-            for (let i = 1; i <= 8; i++) {
-                const userAnswer = answers[`shortAnswer${i}`];
-                const correctAnswer = correctAnswers[`shortAnswer${i}`];
-                const inputElement = document.getElementById(`short-answer-${i}`);
+            let totalScore = 0; // 총 점수를 저장할 변수 초기화
+            for (let i = 1; i <= 8; i++) { // 각 질문을 순회하며 사용자 답변과 정답을 비교
+                const userAnswer = answers[`shortAnswer${i}`]; // 사용자가 입력한 답변
+                const correctAnswer = correctAnswers[`shortAnswer${i}`]; // 해당 질문의 정답
+                const inputElement = document.getElementById(`short-answer-${i}`); // 입력 필드 요소
 
-                inputElement.value = userAnswer;
+                inputElement.value = userAnswer; // 입력 필드에 사용자의 답변을 표시
 
+                // 사용자의 답변이 정답과 일치하는지 확인
                 if (Array.isArray(correctAnswer) ? correctAnswer.includes(userAnswer) : userAnswer === correctAnswer) {
-                    inputElement.classList.add('correct');
-                    totalScore += questionWeights[`shortAnswer${i}`];
+                    inputElement.classList.add('correct'); // 정답일 경우 입력 필드에 'correct' 클래스를 추가
+                    totalScore += questionWeights[`shortAnswer${i}`]; // 정답이면 해당 질문의 가중치를 총 점수에 더함
                 } else {
-                    inputElement.classList.add('incorrect');
-                    const correctAnswerParagraph = document.createElement('p');
+                    inputElement.classList.add('incorrect'); // 오답일 경우 입력 필드에 'incorrect' 클래스를 추가
+                    const correctAnswerParagraph = document.createElement('p'); // 정답을 표시할 <p> 요소를 생성
                     correctAnswerParagraph.innerText = `정답: ${Array.isArray(correctAnswer) ? correctAnswer.join(", ") : correctAnswer}`;
-                    inputElement.parentNode.appendChild(correctAnswerParagraph);
+                    // 정답이 배열이면 쉼표로 구분하여 표시, 단일 정답이면 그대로 표시
+                    inputElement.parentNode.appendChild(correctAnswerParagraph); // 정답을 <p> 요소로 추가하여 입력 필드 아래에 표시
                 }
             }
 
-            const finalScoreDiv = document.getElementById('final-score');
-            finalScoreDiv.innerHTML = `<h2>최종 점수: ${totalScore}/100</h2>`;
-            let message;
+            const finalScoreDiv = document.getElementById('final-score'); // 총 점수를 표시할 요소를 가져옴
+            finalScoreDiv.innerHTML = `<h2>최종 점수: ${totalScore}/100</h2>`; // 총 점수를 표시
+
+            let message; // 총 점수에 따른 메시지 변수 초기화
             if (totalScore === 100) {
                 message = "훌륭합니다! 모두 정답입니다!";
             } else if (totalScore >= 80) {
@@ -133,10 +142,12 @@
             } else {
                 message = "상식이야기가 나오면 조용히 있는게 좋을 것 같습니다..";
             }
-            finalScoreDiv.innerHTML += `<p>${message}</p>`;
+            finalScoreDiv.innerHTML += `<p>${message}</p>`; // 점수에 따른 메시지를 추가로 표시
         }
 
+        // 페이지가 로드될 때 displayResults 함수를 호출하여 결과를 표시
         window.onload = displayResults;
+
     </script>
 </body>
 </html>
