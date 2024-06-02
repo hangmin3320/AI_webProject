@@ -8,7 +8,7 @@ html, body {
 }
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -16,7 +16,7 @@ body {
 }
 .quiz-container {
     width: 600px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -24,7 +24,7 @@ body {
 }
 h1 {
     text-align: center;
-    color: #333;
+    color: white;
 }
 .question {
     margin-bottom: 20px;
@@ -51,12 +51,21 @@ h1 {
 .incorrect {
     background-color: lightcoral !important;
 }
-#final-score {
+
+#final-score > h2{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 2.2em;
+    color: greenyellow;
+}
+
+#final-score > p{
     margin-top: 20px;
     text-align: center;
     font-size: 1.5em;
-    color: #333;
+    color: white;
 }
+
 .backToHome {
     text-align: center;
     color: #333;
@@ -71,4 +80,8 @@ h1 {
 }
 .backToHome:hover {
     background: #d9d9d9;
+}
+
+.question > h3 {
+    color: white;
 }
